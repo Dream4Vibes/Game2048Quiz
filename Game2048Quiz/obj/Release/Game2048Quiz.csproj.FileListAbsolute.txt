@@ -16,3 +16,8 @@ E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\Game2048Quiz.csproj.G
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\Game2048Quiz.csproj.CoreCompileInputs.cache
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\Game2048Quiz.exe
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\Game2048Quiz.pdb
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\Game2048Quiz.exe.config
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\CreditsWindow.baml
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\SettingsWindow.baml
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\CreditsWindow.g.cs
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Release\SettingsWindow.g.cs

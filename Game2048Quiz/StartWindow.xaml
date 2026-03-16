@@ -1,54 +1,92 @@
 ﻿<Window x:Class="Game2048Quiz.StartWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="2048: Информатика - Выбор сложности" Height="450" Width="700" 
+        Title="2048: Информатика - Выбор сложности" 
+        Height="650" Width="1050" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#faf8ef">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
+            <!-- Левая колонка (Меню) -->
             <ColumnDefinition Width="2*"/>
+            <!-- Правая колонка (Картинка + Описание) -->
+            <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Левая часть: Выбор сложности -->
-        <Border Grid.Column="0" Background="#bbada0" Padding="20">
-            <!-- Левая часть: Выбор сложности -->
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Выберите сложность" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+        <!-- Левая часть: Выбор сложности -->
+        <Border Grid.Column="0" Background="#bbada0" Padding="30">
+            <!-- Используем Grid, чтобы закрепить кнопку "Создатели" внизу -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Основной контент -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Кнопка Создатели -->
+                </Grid.RowDefinitions>
 
-                <!-- Убедитесь, что здесь есть Tag="Easy" -->
-                <RadioButton x:Name="RbEasy" Content="Лёгкий" FontSize="18" Foreground="White" Margin="5" Checked="Difficulty_Checked" Tag="Easy"/>
+                <!-- Стек с кнопками выбора сложности -->
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                    <TextBlock Text="Выбери свой путь" FontSize="28" FontWeight="Bold" Foreground="White" Margin="0,0,0,40" TextAlignment="Center"/>
 
-                <!-- Убедитесь, что здесь есть Tag="Medium" -->
-                <RadioButton x:Name="RbMedium" Content="Средний" FontSize="18" Foreground="White" Margin="5" IsChecked="True" Checked="Difficulty_Checked" Tag="Medium"/>
+                    <RadioButton x:Name="RbEasy" Content="Мама говорит &quot;я умный&quot;" FontSize="24" Foreground="White" Margin="0,10" Checked="Difficulty_Checked" Tag="Easy"/>
+                    <RadioButton x:Name="RbMedium" Content="В школе я хорошист" FontSize="24" Foreground="White" Margin="0,10" IsChecked="True" Checked="Difficulty_Checked" Tag="Medium"/>
+                    <RadioButton x:Name="RbHard" Content="Я программист, но не супер..." FontSize="24" Foreground="White" Margin="0,10" Checked="Difficulty_Checked" Tag="Hard"/>
+                    <RadioButton x:Name="RbInsane" Content="Зови меня &quot;Третьяк&quot;, малыш" FontSize="24" Foreground="White" Margin="0,10" Checked="Difficulty_Checked" Tag="Insane"/>
 
-                <!-- И так далее для остальных -->
-                <RadioButton x:Name="RbHard" Content="Сложный" FontSize="18" Foreground="White" Margin="5" Checked="Difficulty_Checked" Tag="Hard"/>
-                <RadioButton x:Name="RbInsane" Content="Безумие" FontSize="18" Foreground="White" Margin="5" Checked="Difficulty_Checked" Tag="Insane"/>
+                    <Button x:Name="BtnStart" Content="ПОЕХАЛИ!" FontSize="26" FontWeight="Bold" Margin="0,50,0,0" Height="60" Click="BtnStart_Click" Background="#8f7a66" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
 
-                <Button Content="НАЧАТЬ ИГРУ" FontSize="20" FontWeight="Bold" Margin="0,30,0,0" Height="50" Click="BtnStart_Click" Background="#8f7a66" Foreground="White"/>
-            </StackPanel>
+                <!-- Кнопка Создатели внизу -->
+                <Button Grid.Row="1" Content="Создатели" 
+                Height="40" FontSize="16" 
+                Background="Transparent" 
+                Foreground="White" 
+                BorderBrush="White" 
+                BorderThickness="2"
+                Click="BtnCredits_Click"
+                Margin="0,20,0,0"/>
+            </Grid>
         </Border>
 
-        <!-- Правая часть: Описание и Картинка -->
+        <!-- Правая часть: Картинка и Описание -->
         <Grid Grid.Column="1" Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="Auto"/>
+                <!-- Картинка занимает верхнюю часть (чуть уменьшили долю) -->
+                <RowDefinition Height="1.8*"/>
+
+                <!-- Описание занимает нижнюю часть (УВЕЛИЧИЛИ ДОЛЮ) -->
+                <RowDefinition Height="1.4*"/>
             </Grid.RowDefinitions>
 
             <!-- Картинка справа сверху -->
-            <Border Grid.Row="0" Background="#cdc1b4" CornerRadius="10" Margin="0,0,0,20" Padding="10">
-                <!-- Stretch="Uniform" сохраняет пропорции картинки -->
+            <Border Grid.Row="0" Background="#cdc1b4" CornerRadius="15" Margin="0,0,0,15" Padding="5">
                 <Image x:Name="ImgPreview" Stretch="Uniform"/>
             </Border>
 
-            <!-- Описание справа снизу -->
-            <Border Grid.Row="1" Background="#eee4da" Padding="15" CornerRadius="5">
-                <StackPanel>
-                    <TextBlock x:Name="TxtTitle" Text="Средний" FontSize="24" FontWeight="Bold" Foreground="#776e65"/>
-                    <TextBlock x:Name="TxtDescription" TextWrapping="Wrap" Margin="0,10,0,0" FontSize="14" Foreground="#776e65" Text="Стандартные вопросы по программированию и сетям. Множитель очков: x1"/>
-                </StackPanel>
+            <!-- Описание справа снизу (Увеличенный блок) -->
+            <Border Grid.Row="1" Background="#eee4da" Padding="20" CornerRadius="10">
+                <!-- ScrollViewer позволит прокрутить текст, если он ОЧЕНЬ длинный -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <!-- Название уровня -->
+                        <TextBlock x:Name="TxtTitle" 
+                                   Text="Medium" 
+                                   FontSize="26" FontWeight="Bold" 
+                                   Foreground="#776e65" 
+                                   TextAlignment="Center" 
+                                   TextWrapping="Wrap"/>
+
+                        <!-- Описание уровня -->
+                        <TextBlock x:Name="TxtDescription" 
+                                   TextWrapping="Wrap" 
+                                   Margin="0,15,0,0" 
+                                   FontSize="17" 
+                                   Foreground="#776e65" 
+                                   Text="Описание уровня..." 
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </ScrollViewer>
             </Border>
         </Grid>
     </Grid>

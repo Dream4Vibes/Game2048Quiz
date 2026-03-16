@@ -16,4 +16,7 @@ E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\Game2048Quiz.exe
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\Game2048Quiz.pdb
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\StartWindow.baml
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\StartWindow.g.cs
-E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\Game2048Quiz.exe.config
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\SettingsWindow.baml
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\SettingsWindow.g.cs
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\CreditsWindow.baml
+E:\Проекты VS\Game2048Quiz\Game2048Quiz\obj\Debug\CreditsWindow.g.cs

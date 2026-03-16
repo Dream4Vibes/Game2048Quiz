@@ -33,6 +33,7 @@ namespace Game2048Quiz
         {
             GameContainer.RowDefinitions.Clear();
             GameContainer.ColumnDefinitions.Clear();
+
             for (int i = 0; i < 4; i++)
             {
                 GameContainer.RowDefinitions.Add(new RowDefinition());
@@ -43,11 +44,26 @@ namespace Game2048Quiz
             {
                 for (int c = 0; c < 4; c++)
                 {
-                    Border border = new Border { Margin = new Thickness(5), CornerRadius = new CornerRadius(5), Background = Brushes.Gray };
-                    TextBlock text = new TextBlock { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, FontSize = 28, FontWeight = FontWeights.Bold, Foreground = Brushes.White };
+                    Border border = new Border
+                    {
+                        Margin = new Thickness(8), // Увеличил отступ между плитками
+                        CornerRadius = new CornerRadius(8), // Скругление углов побольше
+                        Background = Brushes.Gray
+                    };
+
+                    TextBlock text = new TextBlock
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        FontSize = 48, // Шрифт внутри плитки намного больше (было 28)
+                        FontWeight = FontWeights.Bold,
+                        Foreground = Brushes.White
+                    };
+
                     border.Child = text;
                     _textBlocks[r, c] = text;
                     _borders[r, c] = border;
+
                     Grid.SetRow(border, r);
                     Grid.SetColumn(border, c);
                     GameContainer.Children.Add(border);
@@ -59,6 +75,24 @@ namespace Game2048Quiz
         {
             _engine.StartNewGame();
             UpdateUI();
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем окно настроек
+            SettingsWindow settings = new SettingsWindow();
+
+            // Привязываем владельца (чтобы окно было по центру главного)
+            settings.Owner = this;
+
+            // Показываем как диалог
+            bool? result = settings.ShowDialog();
+
+            // Если нажали "Главное меню" (DialogResult = true)
+            if (result == true)
+            {
+                ReturnToMainMenu();
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -164,8 +198,21 @@ namespace Game2048Quiz
             if (_engine.IsGameOver())
             {
                 MessageBox.Show($"Игра окончена! Счет: {_engine.Score}", "Game Over");
-                StartNewGame();
+
+                // Вместо перезапуска игры возвращаемся в меню
+                ReturnToMainMenu();
             }
         }
+
+        private void ReturnToMainMenu()
+        {
+            // Создаем новое стартовое окно
+            StartWindow startWindow = new StartWindow();
+            startWindow.Show();
+
+            // Закрываем текущее игровое окно
+            this.Close();
+        }
+
     }
 }

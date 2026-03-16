@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Проекты VS\Game2048Quiz\Game2048Quiz\App.xaml
-343009224
+5-567007793
 
-121514008894
+141718692799
 13-38814620
-MainWindow.xaml;QuizWindow.xaml;StartWindow.xaml;
+CreditsWindow.xaml;MainWindow.xaml;QuizWindow.xaml;SettingsWindow.xaml;StartWindow.xaml;
 
-False
+True
 

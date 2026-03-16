@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Game2048Quiz.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="2048: Информатика" Height="500" Width="500" 
+        Title="2048: Информатика" 
+        Height="800" Width="800" 
         KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#faf8ef">
@@ -10,18 +11,32 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Верхняя панель: Счет -->
-        <Border Grid.Row="0" Background="#bbada0" Padding="10" Margin="10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="ОЧКИ: " FontSize="24" FontWeight="Bold" Foreground="White"/>
-                <TextBlock x:Name="TxtScore" Text="0" FontSize="24" FontWeight="Bold" Foreground="White"/>
-            </StackPanel>
+        <!-- Верхняя панель: Счет и Меню -->
+        <Border Grid.Row="0" Background="#bbada0" Padding="15" Margin="10">
+            <Grid>
+                <!-- Слева: Счет -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="СЧЁТ: " FontSize="36" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock x:Name="TxtScore" Text="0" FontSize="36" FontWeight="Bold" Foreground="White"/>
+                </StackPanel>
+
+                <!-- Справа: Кнопка Меню -->
+                <Button x:Name="BtnSettings" 
+                Content="☰" 
+                FontSize="36" 
+                FontWeight="Bold" 
+                Width="60" Height="60"
+                Background="#8f7a66" 
+                Foreground="White" 
+                BorderThickness="0"
+                HorizontalAlignment="Right" 
+                Click="BtnSettings_Click"/>
+            </Grid>
         </Border>
 
         <!-- Игровое поле -->
-        <!-- UniformGrid сам выровняет ячейки, а Grid внутри позволит красиво их стилизовать -->
         <Grid x:Name="GameContainer" Grid.Row="1" Margin="10">
-            <!-- Здесь программно создадим сетку -->
+            <!-- Клетки создаются программно -->
         </Grid>
     </Grid>
 </Window>

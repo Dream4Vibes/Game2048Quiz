@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreditsWindow.xaml.cs">
+      <DependentUpon>CreditsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DifficultySettings.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="Question.cs" />
@@ -62,9 +65,16 @@
     <Compile Include="QuizWindow.xaml.cs">
       <DependentUpon>QuizWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreditsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +88,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuizWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,9 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\easy.png" />
-    <Resource Include="Images\hard.png" />
     <Resource Include="Images\insane.png" />
     <Resource Include="Images\medium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,6 +16,13 @@ namespace Game2048Quiz
             UpdateDescription("Medium");
         }
 
+        private void BtnCredits_Click(object sender, RoutedEventArgs e)
+        {
+            CreditsWindow credits = new CreditsWindow();
+            credits.Owner = this; // Чтобы окно было по центру родителя
+            credits.ShowDialog();
+        }
+
         // Обработчик переключения радиокнопок
         private void Difficulty_Checked(object sender, RoutedEventArgs e)
         {
@@ -31,21 +38,18 @@ namespace Game2048Quiz
         {
             _currentSettings = DifficultySettings.GetSettings(level);
 
-            // Обновляем текст
+            // Обновляем тексты
             TxtTitle.Text = _currentSettings.Name;
             TxtDescription.Text = _currentSettings.Description;
 
             // Обновляем картинку
-            // Создаем новый объект BitmapImage из пути
             if (!string.IsNullOrEmpty(_currentSettings.ImagePath))
             {
-                // UriKind.Relative говорит, что путь относительный (внутри проекта)
                 ImgPreview.Source = new BitmapImage(new Uri(_currentSettings.ImagePath, UriKind.Relative));
             }
-            else
-            {
-                ImgPreview.Source = null; // Если картинки нет
-            }
+
+            // НОВОЕ: Меняем текст кнопки
+            BtnStart.Content = _currentSettings.ButtonText;
         }
 
         // Кнопка "Начать игру"
