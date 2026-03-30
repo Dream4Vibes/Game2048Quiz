@@ -9,11 +9,22 @@ namespace Game2048Quiz
             InitializeComponent();
         }
 
+        // НОВЫЙ МЕТОД: Просто закрывает меню
+        private void BtnCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            // DialogResult = false закрывает окно и возвращает управление главному окну
+            this.DialogResult = false;
+        }
+
         private void BtnMainMenu_Click(object sender, RoutedEventArgs e)
         {
-            // Возвращаем true, чтобы сообщить главному окну, что нужно выйти в меню
             DialogResult = true;
             this.Close();
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void BtnTouchGrass_Click(object sender, RoutedEventArgs e)
@@ -22,12 +33,6 @@ namespace Game2048Quiz
                             "Системная ошибка",
                             MessageBoxButton.OK,
                             MessageBoxImage.Error);
-        }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            // Полностью закрывает приложение
-            Application.Current.Shutdown();
         }
     }
 }
